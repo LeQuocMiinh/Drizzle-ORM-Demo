@@ -1,19 +1,13 @@
 {
-	"name": "drizzle-d1-demo",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "wrangler deploy",
-		"dev": "wrangler dev",
-		"start": "wrangler dev",
-		"test": "vitest",
-		"cf-typegen": "wrangler types"
-	},
-	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.8.19",
-		"@cloudflare/workers-types": "^4.20250510.0",
-		"typescript": "^5.5.2",
-		"vitest": "~3.0.7",
-		"wrangler": "^4.14.4"
-	}
+  "name": "hono-mono-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "common": "pnpm --filter @packages/common",
+    "packages:build": "pnpm run common build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

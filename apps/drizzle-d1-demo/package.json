@@ -1,0 +1,26 @@
+{
+	"name": "drizzle-d1-demo",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "tsc-watch --onSuccess \"wrangler dev --remote\"",
+		"preload": "node dist/stores/yaml/preload-config.js",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.8.19",
+		"drizzle-kit": "^0.31.1",
+		"prettier": "^3.5.3",
+		"typescript": "^5.5.2",
+		"vitest": "~3.0.7",
+		"wrangler": "^4.14.4"
+	},
+	"dependencies": {
+		"drizzle-orm": "^0.43.1",
+		"hono": "^4.5.2",
+		"tsc-watch": "^6.2.1"
+	}
+}

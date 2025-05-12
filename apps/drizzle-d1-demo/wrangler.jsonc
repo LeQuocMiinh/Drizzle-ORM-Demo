@@ -5,11 +5,19 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "drizzle-d1-demo",
-	"main": "src/index.ts",
+	"main": "src/main.ts",
 	"compatibility_date": "2025-05-10",
 	"observability": {
 		"enabled": true
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "drizzleDemo",
+			"database_name": "drizzle-d1-demo",
+			"database_id": "6a0af321-88ce-4c77-a7ee-c9c320d86d00",
+			"migrations_dir": "drizzle/migrations"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
