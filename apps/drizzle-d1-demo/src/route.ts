@@ -3,5 +3,6 @@ export const ROUTES = {
 	CreateUser: '/create-user',
 	ListUsers: '/list-users',
 	UpdateUser: '/update-user',
-	DeleteUsers: '/delete-users',
+	DeleteAllUsers: '/delete-all-users',
+	DeleteOneUser: '/delete-one-user',
 };

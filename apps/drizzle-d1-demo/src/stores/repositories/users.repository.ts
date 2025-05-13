@@ -1,33 +1,73 @@
 import { eq } from 'drizzle-orm';
-import { drizzle } from 'drizzle-orm/d1';
 
 import { Env } from '../../constrains';
 import { usersSqliteTable, UsersType } from '../schemas/users.schema';
+import { getDb } from '../drizzle/drizzle.service';
+import { catchError } from '../../utils';
 
-async function listUsers(env: Env): Promise<UsersType[]> {
-	const db = drizzle(env.drizzleDemo);
-	return await db.select().from(usersSqliteTable).all();
+async function existUser(env: Env, userId: number): Promise<UsersType[] | Error> {
+	try {
+		const db = getDb(env);
+		return await db.select().from(usersSqliteTable).where(eq(usersSqliteTable.id, userId));
+	} catch (error) {
+		return new Error(catchError(error));
+	}
 }
 
-async function updateUser(env: Env, userId: number, data: Omit<UsersType, 'id'>): Promise<UsersType[]> {
-	const db = drizzle(env.drizzleDemo);
-
-	return await db.update(usersSqliteTable).set(data).where(eq(usersSqliteTable.id, userId)).returning();
+async function listUsers(env: Env, limit: number = 20, offset: number = 0): Promise<UsersType[] | Error> {
+	try {
+		const db = getDb(env);
+		const rs = await db.select().from(usersSqliteTable).limit(limit).offset(offset);
+		return rs;
+	} catch (error) {
+		return new Error(catchError(error));
+	}
 }
 
-async function createUsers(env: Env, data: Omit<UsersType, 'id'>): Promise<UsersType[]> {
-	const db = drizzle(env.drizzleDemo);
-	return await db.insert(usersSqliteTable).values(data).returning();
+async function updateUser(env: Env, userId: number, data: Omit<UsersType, 'id'>): Promise<UsersType[] | Error> {
+	try {
+		const db = getDb(env);
+		const rs = await db.update(usersSqliteTable).set(data).where(eq(usersSqliteTable.id, userId)).returning();
+		return rs;
+	} catch (error) {
+		return new Error(catchError(error));
+	}
 }
 
-async function deleteUsers(env: Env): Promise<UsersType[]> {
-	const db = drizzle(env.drizzleDemo);
-	return await db.delete(usersSqliteTable).returning();
+async function createUsers(env: Env, data: Omit<UsersType, 'id'>): Promise<UsersType[] | Error> {
+	try {
+		const db = getDb(env);
+		const rs = await db.insert(usersSqliteTable).values(data).returning();
+		return rs;
+	} catch (error) {
+		return new Error(catchError(error));
+	}
+}
+
+async function deleteAllUsers(env: Env): Promise<D1Response | Error> {
+	try {
+		const db = getDb(env);
+		return await db.delete(usersSqliteTable);
+	} catch (error) {
+		return new Error(catchError(error));
+	}
+}
+
+async function deleteOneUser(env: Env, userId: number): Promise<D1Response | Error> {
+	try {
+		const db = getDb(env);
+		const res = await db.delete(usersSqliteTable).where(eq(usersSqliteTable.id, userId));
+		return res;
+	} catch (error) {
+		return new Error(catchError(error));
+	}
 }
 
 export const UsersRepositories = {
+	existUser,
 	listUsers,
 	createUsers,
 	updateUser,
-	deleteUsers,
+	deleteAllUsers,
+	deleteOneUser
 };

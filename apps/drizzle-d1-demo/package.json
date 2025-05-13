@@ -1,10 +1,11 @@
 {
-	"name": "drizzle-d1-demo",
+	"name": "@apps/drizzle-d1-demo",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "tsc-watch --onSuccess \"wrangler dev --remote\"",
+		"local": "tsc-watch --onSuccess \"wrangler dev\"",
 		"load:db": "drizzle-kit push",
 		"migrate:db": "drizzle-kit generate",
 		"preload": "node dist/stores/yaml/preload-config.js",
