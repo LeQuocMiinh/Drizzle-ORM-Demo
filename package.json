@@ -6,7 +6,7 @@
   "scripts": {
     "common": "pnpm --filter @packages/common",
     "packages:build": "pnpm run common build",
-    "drizzle": "pnmpm --filter @apps/drizzle-d1-demo",
+    "drizzle": "pnpm --filter @apps/drizzle-d1-demo",
     "load:db": "pnpm run drizzle run load:db",
     "miragte:db": "pnpm run drizzle run miragte:db",
     "start:dev": "pnpm run drizzle run dev",

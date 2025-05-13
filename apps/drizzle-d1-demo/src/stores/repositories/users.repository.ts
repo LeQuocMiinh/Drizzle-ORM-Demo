@@ -1,9 +1,9 @@
 import { eq } from 'drizzle-orm';
 
 import { Env } from '../../constrains';
-import { usersSqliteTable, UsersType } from '../schemas/users.schema';
-import { getDb } from '../drizzle/drizzle.service';
 import { catchError } from '../../utils';
+import { getDb } from '../drizzle/drizzle.service';
+import { usersSqliteTable, UsersType } from '../schemas/users.schema';
 
 async function existUser(env: Env, userId: number): Promise<UsersType[] | Error> {
 	try {
@@ -69,5 +69,5 @@ export const UsersRepositories = {
 	createUsers,
 	updateUser,
 	deleteAllUsers,
-	deleteOneUser
+	deleteOneUser,
 };
