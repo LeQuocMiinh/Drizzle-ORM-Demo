@@ -18,7 +18,7 @@ export function success(message: string, data?: unknown): Response {
 		JSON.stringify({
 			ok: true,
 			message,
-			data: data,
+			data,
 		}),
 	);
 }

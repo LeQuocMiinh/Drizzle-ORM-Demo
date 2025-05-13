@@ -14,8 +14,8 @@
 		{
 			"binding": "drizzleDemo",
 			"database_name": "drizzle-d1-demo",
-			"database_id": "6a0af321-88ce-4c77-a7ee-c9c320d86d00",
-			"migrations_dir": "drizzle/migrations"
+			"database_id": "970701f4-8338-4ce6-a03e-092e96daae06",
+			"migrations_dir": "migrations"
 		}
 	]
 	/**

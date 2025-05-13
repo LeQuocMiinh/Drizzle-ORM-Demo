@@ -5,6 +5,8 @@
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "tsc-watch --onSuccess \"wrangler dev --remote\"",
+		"load:db": "drizzle-kit push",
+		"migrate:db": "drizzle-kit generate",
 		"preload": "node dist/stores/yaml/preload-config.js",
 		"start": "wrangler dev",
 		"test": "vitest",
@@ -12,6 +14,7 @@
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.8.19",
+		"autocannon": "^8.0.0",
 		"drizzle-kit": "^0.31.1",
 		"prettier": "^3.5.3",
 		"typescript": "^5.5.2",
