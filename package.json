@@ -9,8 +9,8 @@
     "drizzle": "pnpm --filter @apps/drizzle-d1-demo",
     "load:db": "pnpm run drizzle run load:db",
     "miragte:db": "pnpm run drizzle run miragte:db",
-    "start:dev": "pnpm run drizzle run dev",
-    "start:local": "pnpm run drizzle run local",
+    "start:dev": "pnpm run drizzle dev",
+    "start:local": "pnpm run drizzle local",
     "deploy:drizzle": "pnpm run drizzle run deploy"
   },
   "keywords": [],
